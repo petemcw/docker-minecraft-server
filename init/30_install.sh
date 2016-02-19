@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# functions
-lookup_uuid() {
-    UUID_URL="https://api.mojang.com/users/profiles/minecraft/$1"
-    UUID_RAW="`curl -sL $UUID_URL | jsawk -n 'out(this.id)'`"
-    UUID_OPS=${UUID_RAW:0:8}-${UUID_RAW:8:4}-${UUID_RAW:12:4}-${UUID_RAW:16:4}-${UUID_RAW:20:12}
-    echo $UUID_OPS
-}
-
 # check for agreement to EULA
 if [ ! -f "$MINECRAFT_HOME/eula.txt" ]; then
     if [ "$EULA" == "true" ]; then
