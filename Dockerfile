@@ -2,16 +2,17 @@ FROM linuxserver/baseimage
 MAINTAINER Pete McWilliams <petemcw@gmail.com>
 
 ENV APTLIST="libmozjs-24-bin openjdk-7-jre-headless wget"
-ENV MINECRAFT_VERSION="latest" \
-    MINECRAFT_HOME="/src" \
-    MINECRAFT_JAVA_OPTS="-server -Xmx1024M -Xms1024M -XX:MaxPermSize=256m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC" \
+ENV MINECRAFT_HOME="/src" \
+    JAVA_OPTS="-server -Xmx1024M -Xms1024M -XX:MaxPermSize=256m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC" \
+    VERSION="latest" \
     MOTD="Docker Powered Minecraft\!" \
     LEVEL_SEED="" \
     LEVEL_NAME="world" \
     LEVEL_TYPE="DEFAULT" \
     PVP="true" \
     DIFFICULTY="2" \
-    GAMEMODE="0"
+    GAMEMODE="0" \
+    MAX_TICK_TIME="-1"
 
 # install/update packages
 RUN apt-get -yqq update && \
@@ -32,5 +33,5 @@ RUN  chmod +x /etc/service/*/run /etc/my_init.d/*.sh
 
 # exports
 EXPOSE  25565
-VOLUME  [ $MINECRAFT_HOME ]
-WORKDIR $MINECRAFT_HOME
+VOLUME  [ "/src" ]
+WORKDIR /src
