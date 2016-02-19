@@ -5,7 +5,13 @@ ENV APTLIST="libmozjs-24-bin openjdk-7-jre-headless wget"
 ENV MINECRAFT_VERSION="latest" \
     MINECRAFT_HOME="/src" \
     MINECRAFT_JAVA_OPTS="-server -Xmx1024M -Xms1024M -XX:MaxPermSize=256m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC" \
-    MINECRAFT_MOTD="Docker Powered Minecraft!"
+    MOTD="Docker Powered Minecraft\!" \
+    LEVEL_SEED="" \
+    LEVEL_NAME="world" \
+    LEVEL_TYPE="DEFAULT" \
+    PVP="true" \
+    DIFFICULTY="2" \
+    GAMEMODE="0"
 
 # install/update packages
 RUN apt-get -yqq update && \
@@ -21,7 +27,7 @@ RUN curl -sL https://raw.githubusercontent.com/micha/jsawk/master/jsawk -o /usr/
 # add scripts
 COPY init/ /etc/my_init.d/
 COPY services/ /etc/service/
-# COPY defaults/ /src
+COPY defaults/ /src
 RUN  chmod +x /etc/service/*/run /etc/my_init.d/*.sh
 
 # exports

@@ -65,5 +65,16 @@ if [ ! -f "$MINECRAFT_HOME/ops.json" -a ! -f "$MINECRAFT_HOME/ops.txt.converted"
     echo "-----> Done!"
 fi
 
+# This simple loop read the template file and writes out the environment
+# values to a servers.properties file.
+if [ ! -f "$MINECRAFT_HOME/server.properties" ]; then
+    echo "==> Adding a properties template"
+    while read SETTING
+    do
+        eval echo $SETTING
+    done < $MINECRAFT_HOME/server.properties.template > $MINECRAFT_HOME/server.properties
+    echo "-----> Done!"
+fi
+
 # set proper permissions
 chown -R abc:abc $MINECRAFT_HOME
