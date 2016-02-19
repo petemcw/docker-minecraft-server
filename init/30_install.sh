@@ -72,7 +72,7 @@ if [ ! -f "$MINECRAFT_HOME/server.properties" ]; then
     while read SETTING
     do
         eval echo $SETTING
-    done < $MINECRAFT_HOME/server.properties.template > $MINECRAFT_HOME/server.properties
+    done < /tmp/server.properties.template > $MINECRAFT_HOME/server.properties
     echo "-----> Done!"
 fi
 

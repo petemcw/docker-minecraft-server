@@ -27,7 +27,7 @@ RUN curl -sL https://raw.githubusercontent.com/micha/jsawk/master/jsawk -o /usr/
 # add scripts
 COPY init/ /etc/my_init.d/
 COPY services/ /etc/service/
-COPY defaults/ /src
+COPY defaults/ /tmp
 RUN  chmod +x /etc/service/*/run /etc/my_init.d/*.sh
 
 # exports
