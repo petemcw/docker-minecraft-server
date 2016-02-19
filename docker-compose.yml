@@ -1,0 +1,15 @@
+minecraft:
+  image: petemcw/minecraft-server
+  ports:
+    - "25565:25565"
+  volumes_from:
+    - minecraft_data
+  restart: always
+  environment:
+    - PUID=501
+    - PGID=20
+
+minecraft_data:
+  image: tianon/true
+  volumes:
+    - /src

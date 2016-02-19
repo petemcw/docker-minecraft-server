@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# change to install directory before running
+cd /src
+
+exec /sbin/setuser abc java $MINECRAFT_JAVA_OPTS -jar $MINECRAFT_HOME/minecraft_server.jar nogui
