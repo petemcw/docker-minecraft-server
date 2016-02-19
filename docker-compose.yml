@@ -6,8 +6,14 @@ minecraft:
     - minecraft_data
   restart: always
   environment:
+    - ADVANCED_DISABLEUPDATES=true
     - PUID=501
     - PGID=20
+    - EULA=true
+    - DEFAULT_OP=petemcw
+    - LEVEL_SEED=69160882195
+    - VERSION=latest
+    - JAVA_OPTS=-server -Xmx1024M -Xms1024M -XX:MaxPermSize=256m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true -XX:UseSSE=3 -XX:-DisableExplicitGC -XX:ParallelGCThreads=4 -XX:+AggressiveOpts -XX:+UseParNewGC
 
 minecraft_data:
   image: tianon/true
