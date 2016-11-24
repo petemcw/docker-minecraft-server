@@ -43,14 +43,14 @@ JAR_FILE=${JAR_FILE:-"minecraft_server.$VERSION.jar"}
 SERVER_URL="https://s3.amazonaws.com/Minecraft.Download/versions/$VERSION/$JAR_FILE"
 
 # download Minecraft server
-if [ ! -f "$MINECRAFT_HOME/minecraft_server.jar" ]; then
+if [ ! -f "$MINECRAFT_HOME/$JAR_FILE" ]; then
     echo "==> Downloading $JAR_FILE"
-    curl -sSf $SERVER_URL -o $MINECRAFT_HOME/$JAR_FILE
+    curl -sSf "$SERVER_URL" -o "$MINECRAFT_HOME/$JAR_FILE"
     if [ $? -ne 0 ]; then
         echo >&2 "Failed downloading $JAR_FILE"
         exit 1
     fi
-    mv $JAR_FILE $MINECRAFT_HOME/minecraft_server.jar
+    mv "$MINECRAFT_HOME/$JAR_FILE" "$MINECRAFT_HOME/minecraft_server.jar"
     echo "-----> Done!"
 fi
 
